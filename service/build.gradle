@@ -5,8 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.mano3567'
-version = '1.0.4'
+group = 'com.github.mano3567.open-data-geolocation-kt'
 
 repositories {
     mavenCentral()
