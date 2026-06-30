@@ -2,11 +2,9 @@ package sample.geolocation.cli
 
 import se.metricspace.opendata.geolocation.GeoLocationService
 import kotlinx.coroutines.runBlocking
-import java.util.Scanner
 
 fun main() {
-    val service = GeoLocationService(userAgent = "MinVaderApp/1.0")
-    val scanner = Scanner(System.`in`)
+    val service = GeoLocationService(userAgent = "metricspace.location/1.0.2")
 
     println("--- Välkommen till GeoService CLI ---")
     println("Skriv namnet på en plats för att slå upp den, eller 'q' för att avsluta.")
