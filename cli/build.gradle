@@ -1,0 +1,27 @@
+plugins {
+    id 'application'
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.shadow)
+}
+def appVersion = libs.versions.app.get()
+version = appVersion
+group = "sample.geolocation.cli"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(":service"))
+    implementation libs.kotlinx.coroutines.core
+}
+
+application {
+    // Sökvägen till din main-funktion. 
+    // Om filen heter Main.kt blir klassnamnet MainKt (Gradle behöver detta för att kunna köra appen)
+    mainClass.set("sample.geolocation.cli.MainKt")
+}
+tasks.withType(JavaExec) {
+    standardInput = System.in
+}
