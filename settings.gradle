@@ -1,2 +1,2 @@
-rootProject.name = 'open-data-geolocation-parent§'
+rootProject.name = 'open-data-geolocation-parent'
 include('cli', 'service')
