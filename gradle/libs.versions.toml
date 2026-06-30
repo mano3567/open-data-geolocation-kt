@@ -1,5 +1,4 @@
 [versions]
-# Lade till en 'app'-version för din CLI:s def appVersion
 app = "1.0.0"
 kotlin = "2.3.21"
 guava = "33.5.0-jre"
