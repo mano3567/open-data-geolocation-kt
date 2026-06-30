@@ -22,6 +22,12 @@ dependencies {
 publishing {
     publications {
         maven(MavenPublication) {
+            groupId = 'com.github.mano3567.open-data-geolocation-kt'
+
+            artifactId = 'service'
+
+            version = project.version
+
             from components.java
         }
     }
