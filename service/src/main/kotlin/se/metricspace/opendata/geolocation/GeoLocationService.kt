@@ -28,7 +28,7 @@ data class Location(
 )
 
 class GeoLocationService(private val userAgent: String) {
-    private val client = HttpClient(CIO) {
+    private val httpClient = HttpClient(CIO) {
         install(ContentNegotiation) {
             json(Json { ignoreUnknownKeys = true })
         }
@@ -53,7 +53,7 @@ class GeoLocationService(private val userAgent: String) {
 
     suspend fun findLocation(someLocation: String): Location? {
         return try {
-            val response = client.get("https://nominatim.openstreetmap.org/search") {
+            val response = httpClient.get("https://nominatim.openstreetmap.org/search") {
                 header("User-Agent", userAgent)
                 parameter("q", someLocation)
                 parameter("format", "json")
@@ -88,5 +88,9 @@ class GeoLocationService(private val userAgent: String) {
             println("Some problem in findLocation: ${e.message}")
             null
         }
+    }
+
+    fun close() {
+        httpClient.close()
     }
 }

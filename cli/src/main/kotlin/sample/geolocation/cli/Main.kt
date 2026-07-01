@@ -4,7 +4,7 @@ import se.metricspace.opendata.geolocation.GeoLocationService
 import kotlinx.coroutines.runBlocking
 
 fun main() {
-    val service = GeoLocationService(userAgent = "metricspace.location/1.0.2")
+    val geoLocationService = GeoLocationService(userAgent = "metricspace.location/1.0.7")
 
     println("--- Välkommen till GeoService CLI ---")
     println("Skriv namnet på en plats för att slå upp den, eller 'q' för att avsluta.")
@@ -20,14 +20,26 @@ fun main() {
             if (input.isBlank()) continue
 
             println("Söker efter '$input'...")
-            val location = service.findLocation(input)
+            val location = geoLocationService.findLocation(input)
 
             if (location != null) {
                 println("Resultat: ${location.displayName}")
                 println("Lat/Lon: ${location.latitude}, ${location.longitude}")
+                println("Name: ${location.name}")
+                println("AddressType: ${location.addressType}")
+                println("Type: ${location.type}")
+                println("BoundingBox: ${location.boundingBox}")
+                println("Licence: ${location.licence}")
+                println("Importance: ${location.importance}")
+                println("OsmId: ${location.osmId}")
+                println("OsmType: ${location.osmType}")
+                println("PlaceId: ${location.placeId}")
+                println("PlaceRank: ${location.placeRank}")
             } else {
                 println("Hittade tyvärr inget för '$input'.")
             }
         }
     }
+
+    geoLocationService.close()
 }
