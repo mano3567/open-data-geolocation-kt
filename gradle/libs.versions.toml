@@ -1,5 +1,5 @@
 [versions]
-app = "1.0.7"
+app = "1.0.8"
 kotlin = "2.3.21"
 guava = "33.5.0-jre"
 junit-jupiter-engine = "6.0.1"
@@ -7,6 +7,7 @@ kotlinx-serialization = "1.11.0"
 ktor = "3.5.1"
 shadow = "9.4.3"
 coroutines = "1.11.0"
+slf4j = "2.0.18"
 
 [libraries]
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -18,6 +19,7 @@ ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

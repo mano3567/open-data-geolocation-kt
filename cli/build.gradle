@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation(project(":service"))
     implementation libs.kotlinx.coroutines.core
+    implementation(libs.slf4j.simple)
 }
 
 application {

@@ -4,7 +4,7 @@ import se.metricspace.opendata.geolocation.GeoLocationService
 import kotlinx.coroutines.runBlocking
 
 fun main() {
-    val geoLocationService = GeoLocationService(userAgent = "metricspace.location/1.0.7")
+    val geoLocationService = GeoLocationService(userAgent = "metricspace.location/1.0.7", listOf("se", "no", "dk", "fi"))
 
     println("--- Välkommen till GeoService CLI ---")
     println("Skriv namnet på en plats för att slå upp den, eller 'q' för att avsluta.")
@@ -14,13 +14,17 @@ fun main() {
             print("\nVal (q för att avsluta): ")
 
             // readlnOrNull returnerar null om input-strömmen stängs (t.ex. Ctrl+D)
-            val input = readlnOrNull()?.trim() ?: break
+            val userInput = readlnOrNull()?.trim() ?: break
 
-            if (input.equals("q", ignoreCase = true)) break
-            if (input.isBlank()) continue
+            if (userInput.equals("q", ignoreCase = true)) break
+            if (userInput.isBlank()) continue
 
-            println("Söker efter '$input'...")
-            val location = geoLocationService.findLocation(input)
+            println("Söker efter '$userInput'...")
+            val locations = geoLocationService.findLocations(userInput)
+            locations.forEach {
+                println(it)
+            }
+            val location = geoLocationService.findLocation(userInput)
 
             if (location != null) {
                 println("Resultat: ${location.displayName}")
@@ -36,7 +40,7 @@ fun main() {
                 println("PlaceId: ${location.placeId}")
                 println("PlaceRank: ${location.placeRank}")
             } else {
-                println("Hittade tyvärr inget för '$input'.")
+                println("Hittade tyvärr inget för '$userInput'.")
             }
         }
     }
